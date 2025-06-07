@@ -14,8 +14,8 @@ class GameScene extends Phaser.Scene {
   /**
    * This method is the constructor
    */
-  constructor() {
-    super({ key: "gameScene" })
+  constructor () {
+    super({ key: 'gameScene' })
 
     this.background = null
   }
@@ -26,21 +26,21 @@ class GameScene extends Phaser.Scene {
    *  before preload() and create().
    * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start().
    */
-  init(data) {
-    this.cameras.main.setBackgroundColor("ffffff")
+  init (data) {
+    this.cameras.main.setBackgroundColor('ffffff')
   }
 
   /**
    * Can be defined on your own scenes.
    * Use it to load assets.
    */
-  preload() {
-    console.log("Game Scene")
+  preload () {
+    console.log('Game Scene')
 
     this.load.image('bodyBackground', './assets/bodybg.png')
   }
 
-  create(data) {
+  create (data) {
     // pass
   }
 
@@ -50,7 +50,7 @@ class GameScene extends Phaser.Scene {
    * @param {number} time - current time.
    * @param {number} delta - The delta time in ms since last frame.
    */
-  update(time, delta) {
+  update (time, delta) {
     // pass
   }
 }
