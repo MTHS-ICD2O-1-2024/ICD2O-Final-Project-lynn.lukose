@@ -18,6 +18,12 @@ class GameScene extends Phaser.Scene {
     super({ key: 'gameScene' })
 
     this.background = null
+    this.cardOne = null
+    this.cardTwo = null
+    this.cardThree = null
+    this.cardFour = null
+    this.cardFive = null
+    this.cardSix = null
   }
 
   /**
@@ -38,6 +44,7 @@ class GameScene extends Phaser.Scene {
     console.log('Game Scene')
 
     this.load.image('bodyBackground', './assets/bodybg.png')
+    this.load.image('cardOne', )
   }
 
   create (data) {
