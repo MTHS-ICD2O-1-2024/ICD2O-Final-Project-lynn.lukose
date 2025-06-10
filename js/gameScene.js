@@ -56,7 +56,7 @@ class GameScene extends Phaser.Scene {
     this.background = this.add.image(0, 0, 'bodyBackground').setScale(2.0)
     this.background.setOrigin(0, 0)
 
-    this.cardOne = this.add.sprite(1920 / 2 - 500 , 1080 / 2 - 250, 'cardOne')
+    this.cardOne = this.add.sprite(1920 / 2 - 500, 1080 / 2 - 250, 'cardOne')
     this.cardOne.setInteractive({ useHandCursor: true })
     this.cardOne.on('pointerdown', () => this.clickButton())
 
