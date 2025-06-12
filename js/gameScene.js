@@ -11,6 +11,7 @@
  */
 
 class GameScene extends Phaser.Scene {
+
   /**
    * This method is the constructor
    */
@@ -50,6 +51,9 @@ class GameScene extends Phaser.Scene {
     this.load.image('cardFour', './assets/facedown.png')
     this.load.image('cardFive', './assets/facedown.png')
     this.load.image('cardSix', './assets/facedown.png')
+    this.load.image('five_hearts', './assets/five_hearts.png')
+
+    // create some variables and do some random numbers to pick the cards
   }
 
   create (data) {
@@ -58,7 +62,7 @@ class GameScene extends Phaser.Scene {
 
     this.cardOne = this.add.sprite(1920 / 2 - 500, 1080 / 2 - 250, 'cardOne')
     this.cardOne.setInteractive({ useHandCursor: true })
-    this.cardOne.on('pointerdown', () => this.clickButton())
+    this.cardOne.on('pointerdown', () => this.clickCard1())
 
     this.cardTwo = this.add.sprite(1920 / 2, 1080 / 2 - 250, 'cardTwo')
     this.cardTwo.setInteractive({ useHandCursor: true })
@@ -90,6 +94,19 @@ class GameScene extends Phaser.Scene {
   update (time, delta) {
     // pass
   }
+
+    // function for clicking the cards
+    clickCard1() {
+      // turn over
+      // got from chatgpt
+      // question: phaser3 how do you change the texture on a sprite
+      /*
+        // Change the texture of the sprite
+        const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+        mySprite.setTexture('newImage');
+      */
+      this.cardOne.setTexture('five_hearts')
+    }
 }
 
 export default GameScene
