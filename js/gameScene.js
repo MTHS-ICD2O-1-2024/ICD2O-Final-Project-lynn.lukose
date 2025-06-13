@@ -10,7 +10,7 @@
  * This class is the Game Scene scene
  */
 
-class GameScene extends Phaser.Scene {
+class GameScene extends Phaser.Scene{
 
   /**
    * This method is the constructor
@@ -95,16 +95,16 @@ class GameScene extends Phaser.Scene {
     // pass
   }
 
-    // function for clicking the cards
-    clickCard1() {
-      // turn over
-      // got from chatgpt
-      // question: phaser3 how do you change the texture on a sprite
-      /*
-        // Change the texture of the sprite
-        const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
-        mySprite.setTexture('newImage');
-      */
+  // function for clicking the cards
+  clickCard1 () {
+    // turn over
+    // got from chatgpt
+    // question: phaser3 how do you change the texture on a sprite
+    /*
+      // Change the texture of the sprite
+      const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+      mySprite.setTexture('newImage');
+    */
       this.cardOne.setTexture('five_hearts')
     }
 }
