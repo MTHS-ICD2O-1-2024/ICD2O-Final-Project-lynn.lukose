@@ -10,8 +10,7 @@
  * This class is the Game Scene scene
  */
 
-class GameScene extends Phaser.Scene{
-
+class GameScene extends Phaser.Scene {
   /**
    * This method is the constructor
    */
@@ -105,8 +104,8 @@ class GameScene extends Phaser.Scene{
       const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
       mySprite.setTexture('newImage');
     */
-      this.cardOne.setTexture('five_hearts')
-    }
+    this.cardOne.setTexture('five_hearts')
+  }
 }
 
 export default GameScene
