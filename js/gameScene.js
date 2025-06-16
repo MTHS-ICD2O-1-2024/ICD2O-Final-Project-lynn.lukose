@@ -24,6 +24,13 @@ class GameScene extends Phaser.Scene {
     this.cardFour = null
     this.cardFive = null
     this.cardSix = null
+
+    // used gemini
+    this.firstCard = null
+    this.secondCard = null
+    this.canFlip = true
+    this.flippedCardsCount = 0 // To track how many cards are currently face-up
+
   }
 
   /**
@@ -44,13 +51,10 @@ class GameScene extends Phaser.Scene {
     console.log('Game Scene')
 
     this.load.image('bodyBackground', './assets/bodybg.png')
-    this.load.image('cardOne', './assets/facedown.png')
-    this.load.image('cardTwo', './assets/facedown.png')
-    this.load.image('cardThree', './assets/facedown.png')
-    this.load.image('cardFour', './assets/facedown.png')
-    this.load.image('cardFive', './assets/facedown.png')
-    this.load.image('cardSix', './assets/facedown.png')
+    this.load.image('cardBack', './assets/facedown.png')
     this.load.image('five_hearts', './assets/five_hearts.png')
+    this.load.image('seven_clubs', './assets/4.png')
+    this.load.image('three_spades', './assets/5.png')
 
     // create some variables and do some random numbers to pick the cards
   }
@@ -59,29 +63,30 @@ class GameScene extends Phaser.Scene {
     this.background = this.add.image(0, 0, 'bodyBackground').setScale(2.0)
     this.background.setOrigin(0, 0)
 
-    this.cardOne = this.add.sprite(1920 / 2 - 500, 1080 / 2 - 250, 'cardOne')
+    this.cardOne = this.add.sprite(1920 / 2 - 500, 1080 / 2 - 250, 'cardBack')
     this.cardOne.setInteractive({ useHandCursor: true })
     this.cardOne.on('pointerdown', () => this.clickCard1())
 
-    this.cardTwo = this.add.sprite(1920 / 2, 1080 / 2 - 250, 'cardTwo')
+    this.cardTwo = this.add.sprite(1920 / 2, 1080 / 2 - 250, 'cardBack')
     this.cardTwo.setInteractive({ useHandCursor: true })
-    this.cardTwo.on('pointerdown', () => this.clickButton())
+    this.cardTwo.on('pointerdown', () => this.clickCard2())
 
-    this.cardThree = this.add.sprite(1920 / 2 + 500, 1080 / 2 - 250, 'cardThree')
+    this.cardThree = this.add.sprite(1920 / 2 + 500, 1080 / 2 - 250, 'cardBack')
     this.cardThree.setInteractive({ useHandCursor: true })
-    this.cardThree.on('pointerdown', () => this.clickButton())
+    this.cardThree.on('pointerdown', () => this.clickCard3())
 
-    this.cardFour = this.add.sprite(1920 / 2 + 500, 1080 / 2 + 250, 'cardFour')
+    this.cardFour = this.add.sprite(1920 / 2 + 500, 1080 / 2 + 250, 'cardBack')
     this.cardFour.setInteractive({ useHandCursor: true })
-    this.cardFour.on('pointerdown', () => this.clickButton())
+    this.cardFour.on('pointerdown', () => this.clickCard4())
 
-    this.cardFive = this.add.sprite(1920 / 2, 1080 / 2 + 250, 'cardFive')
+    this.cardFive = this.add.sprite(1920 / 2, 1080 / 2 + 250, 'cardBack')
     this.cardFive.setInteractive({ useHandCursor: true })
-    this.cardFive.on('pointerdown', () => this.clickButton())
+    this.cardFive.on('pointerdown', () => this.clickCard5())
 
-    this.cardSix = this.add.sprite(1920 / 2 - 500, 1080 / 2 + 250, 'cardSix')
+    this.cardSix = this.add.sprite(1920 / 2 - 500, 1080 / 2 + 250, 'cardBack')
     this.cardSix.setInteractive({ useHandCursor: true })
-    this.cardSix.on('pointerdown', () => this.clickButton())
+    this.cardSix.on('pointerdown', () => this.clickCard6())
+
   }
 
   /**
@@ -106,6 +111,67 @@ class GameScene extends Phaser.Scene {
     */
     this.cardOne.setTexture('five_hearts')
   }
+
+  clickCard2() {
+    // turn over
+    // got from chatgpt
+    // question: phaser3 how do you change the texture on a sprite
+    /*
+      // Change the texture of the sprite
+      const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+      mySprite.setTexture('newImage');
+    */
+    this.cardTwo.setTexture('seven_clubs')
+  }
+
+  clickCard3() {
+    // turn over
+    // got from chatgpt
+    // question: phaser3 how do you change the texture on a sprite
+    /*
+      // Change the texture of the sprite
+      const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+      mySprite.setTexture('newImage');
+    */
+    this.cardThree.setTexture('three_spades')
+  }
+
+  clickCard4() {
+    // turn over
+    // got from chatgpt
+    // question: phaser3 how do you change the texture on a sprite
+    /*
+      // Change the texture of the sprite
+      const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+      mySprite.setTexture('newImage');
+    */
+    this.cardFour.setTexture('five_hearts')
+  }
+
+  clickCard5() {
+    // turn over
+    // got from chatgpt
+    // question: phaser3 how do you change the texture on a sprite
+    /*
+      // Change the texture of the sprite
+      const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+      mySprite.setTexture('newImage');
+    */
+    this.cardFive.setTexture('seven_clubs')
+  }
+
+  clickCard6() {
+    // turn over
+    // got from chatgpt
+    // question: phaser3 how do you change the texture on a sprite
+    /*
+      // Change the texture of the sprite
+      const mySprite = this.scene.get('mySprite'); // Get the sprite from the scene
+      mySprite.setTexture('newImage');
+    */
+    this.cardSix.setTexture('three_spades')
+  }
+
 }
 
 export default GameScene
