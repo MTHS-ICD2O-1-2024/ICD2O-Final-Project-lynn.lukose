@@ -30,7 +30,6 @@ class GameScene extends Phaser.Scene {
     this.secondCard = null
     this.canFlip = true
     this.flippedCardsCount = 0 // To track how many cards are currently face-up
-
   }
 
   /**
@@ -86,7 +85,6 @@ class GameScene extends Phaser.Scene {
     this.cardSix = this.add.sprite(1920 / 2 - 500, 1080 / 2 + 250, 'cardBack')
     this.cardSix.setInteractive({ useHandCursor: true })
     this.cardSix.on('pointerdown', () => this.clickCard6())
-
   }
 
   /**
@@ -112,7 +110,7 @@ class GameScene extends Phaser.Scene {
     this.cardOne.setTexture('five_hearts')
   }
 
-  clickCard2() {
+  clickCard2 () {
     // turn over
     // got from chatgpt
     // question: phaser3 how do you change the texture on a sprite
@@ -124,7 +122,7 @@ class GameScene extends Phaser.Scene {
     this.cardTwo.setTexture('seven_clubs')
   }
 
-  clickCard3() {
+  clickCard3 () {
     // turn over
     // got from chatgpt
     // question: phaser3 how do you change the texture on a sprite
@@ -136,7 +134,7 @@ class GameScene extends Phaser.Scene {
     this.cardThree.setTexture('three_spades')
   }
 
-  clickCard4() {
+  clickCard4 () {
     // turn over
     // got from chatgpt
     // question: phaser3 how do you change the texture on a sprite
@@ -148,7 +146,7 @@ class GameScene extends Phaser.Scene {
     this.cardFour.setTexture('five_hearts')
   }
 
-  clickCard5() {
+  clickCard5 () {
     // turn over
     // got from chatgpt
     // question: phaser3 how do you change the texture on a sprite
@@ -160,7 +158,7 @@ class GameScene extends Phaser.Scene {
     this.cardFive.setTexture('seven_clubs')
   }
 
-  clickCard6() {
+  clickCard6 () {
     // turn over
     // got from chatgpt
     // question: phaser3 how do you change the texture on a sprite
@@ -171,7 +169,6 @@ class GameScene extends Phaser.Scene {
     */
     this.cardSix.setTexture('three_spades')
   }
-
 }
 
 export default GameScene
