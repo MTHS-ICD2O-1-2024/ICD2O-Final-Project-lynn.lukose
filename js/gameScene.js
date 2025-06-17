@@ -143,7 +143,7 @@ class GameScene extends Phaser.Scene {
 
         // Using assistance from Google Gemini AI.
         this.time.delayedCall(1000, this.checkForMatch, null, this)
-        }
+      }
     }
   }
 
