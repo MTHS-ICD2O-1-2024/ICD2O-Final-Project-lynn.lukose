@@ -146,7 +146,7 @@ class GameScene extends Phaser.Scene {
 
       // After a short delay (e.g., 1 second), call the 'checkForMatch' function.
       // The 'this' argument ensures that 'this' inside 'checkForMatch' refers to the scene.
-      this.time.delayedCall(1000, this.checkForMatch, [], this)
+      this.time.delayedCall(1000, this.checkForMatch, this)
     }
   }
 
