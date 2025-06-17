@@ -117,7 +117,7 @@ class GameScene extends Phaser.Scene {
 
   /**
    * Sourced by Google Gemini
-   * Handles the logic for flipping a single card.
+   * Handles the logic for flipping a single card and stores reference to this card
    * This function manages the game flow for a turn.
    * @param {Phaser.GameObjects.Sprite} card - The specific card sprite that was clicked.
    */
@@ -134,11 +134,11 @@ class GameScene extends Phaser.Scene {
       if (this.flippedCardsCount === 0) {
         // Using assistance from Google Gemini AI.
         this.firstCard = card // Store a reference to this card
-        this.flippedCardsCount++ // Increment the counter
+        this.flippedCardsCount++ // Add one to the counter
       } else if (this.flippedCardsCount === 1) {
         // Using assistance from Google Gemini AI.
         this.secondCard = card // Store a reference to this card
-        this.flippedCardsCount++ // Increment the counter
+        this.flippedCardsCount++ // Add one to the counter
         this.canFlip = false // Prevent any more cards from being clicked until this pair is processed
 
         // Using assistance from Google Gemini AI.
