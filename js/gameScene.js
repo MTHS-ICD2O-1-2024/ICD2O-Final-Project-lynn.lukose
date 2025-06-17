@@ -14,7 +14,7 @@ class GameScene extends Phaser.Scene {
   /**
    * This method is the constructor
    */
-  constructor() {
+  constructor () {
     super({ key: 'gameScene' })
 
     this.background = null
@@ -38,7 +38,7 @@ class GameScene extends Phaser.Scene {
    *  before preload() and create().
    * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start().
    */
-  init(data) {
+  init (data) {
     this.cameras.main.setBackgroundColor('ffffff')
   }
 
@@ -46,7 +46,7 @@ class GameScene extends Phaser.Scene {
    * Can be defined on your own scenes.
    * Use it to load assets.
    */
-  preload() {
+  preload () {
     console.log('Game Scene')
 
     this.load.image('bodyBackground', './assets/bodybg.png')
@@ -58,7 +58,7 @@ class GameScene extends Phaser.Scene {
     // create some variables and do some random numbers to pick the cards
   }
 
-  create(data) {
+  create (data) {
     this.background = this.add.image(0, 0, 'bodyBackground').setScale(2.0)
     this.background.setOrigin(0, 0)
 
@@ -111,7 +111,7 @@ class GameScene extends Phaser.Scene {
    * @param {number} time - current time.
    * @param {number} delta - The delta time in ms since last frame.
    */
-  update(time, delta) {
+  update (time, delta) {
     // pass
   }
 
@@ -121,7 +121,7 @@ class GameScene extends Phaser.Scene {
    * This function manages the game flow for a turn.
    * @param {Phaser.GameObjects.Sprite} card - The specific card sprite that was clicked.
    */
-  flipCard(card) {
+  flipCard (card) {
     // If cards cannot be flipped (e.g., two are already face-up awaiting a check),
     // or if the clicked card is already face-up, or if it's already part of a matched pair,
     // then do nothing.
@@ -154,7 +154,7 @@ class GameScene extends Phaser.Scene {
    * Compares the two flipped cards to see if they are a match.
    * Resets the game state for the next turn.
    */
-  checkForMatch() {
+  checkForMatch () {
     // Check if the face textures of the two flipped cards are the same
     if (this.firstCard.faceTexture === this.secondCard.faceTexture) {
       // It's a match!
@@ -164,8 +164,7 @@ class GameScene extends Phaser.Scene {
       // Mark them as matched cards
       this.firstCard.isMatched = true
       this.secondCard.isMatched = true
-    }
-    else {
+    } else {
       // Not a match!
       // Flip both cards back to their face-down texture
       this.firstCard.setTexture('cardBack')
