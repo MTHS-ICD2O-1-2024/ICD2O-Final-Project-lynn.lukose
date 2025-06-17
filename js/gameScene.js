@@ -14,7 +14,7 @@ class GameScene extends Phaser.Scene {
   /**
    * This method is the constructor
    */
-  constructor () {
+  constructor() {
     super({ key: 'gameScene' })
 
     this.background = null
@@ -38,7 +38,7 @@ class GameScene extends Phaser.Scene {
    *  before preload() and create().
    * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start().
    */
-  init (data) {
+  init(data) {
     this.cameras.main.setBackgroundColor('ffffff')
   }
 
@@ -46,7 +46,7 @@ class GameScene extends Phaser.Scene {
    * Can be defined on your own scenes.
    * Use it to load assets.
    */
-  preload () {
+  preload() {
     console.log('Game Scene')
 
     this.load.image('bodyBackground', './assets/bodybg.png')
@@ -58,16 +58,16 @@ class GameScene extends Phaser.Scene {
     // create some variables and do some random numbers to pick the cards
   }
 
-  create (data) {
+  create(data) {
     this.background = this.add.image(0, 0, 'bodyBackground').setScale(2.0)
     this.background.setOrigin(0, 0)
 
     this.cardOne = this.add.sprite(1920 / 2 - 500, 1080 / 2 - 250, 'cardBack')
     this.cardOne.faceTexture = 'five_hearts'
-    this.cardOne.isFlipped = false 
-    this.cardOne.isMatched = false 
+    this.cardOne.isFlipped = false
+    this.cardOne.isMatched = false
     this.cardOne.setInteractive({ useHandCursor: true })
-    this.cardOne.on('pointerdown', () => this.flipCard(this.cardOne)) 
+    this.cardOne.on('pointerdown', () => this.flipCard(this.cardOne))
 
     this.cardTwo = this.add.sprite(1920 / 2, 1080 / 2 - 250, 'cardBack')
     this.cardTwo.faceTexture = 'seven_clubs'
@@ -111,7 +111,7 @@ class GameScene extends Phaser.Scene {
    * @param {number} time - current time.
    * @param {number} delta - The delta time in ms since last frame.
    */
-  update (time, delta) {
+  update(time, delta) {
     // pass
   }
 
@@ -164,8 +164,8 @@ class GameScene extends Phaser.Scene {
       // Mark them as matched cards
       this.firstCard.isMatched = true
       this.secondCard.isMatched = true
-      // Removed: matchesFound++ and win condition check
-    } else {
+    }
+    else {
       // Not a match!
       // Flip both cards back to their face-down texture
       this.firstCard.setTexture('cardBack')
