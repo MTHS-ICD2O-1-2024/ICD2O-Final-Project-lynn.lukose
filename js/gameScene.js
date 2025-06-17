@@ -125,28 +125,25 @@ class GameScene extends Phaser.Scene {
     // If cards cannot be flipped (e.g., two are already face-up awaiting a check),
     // or if the clicked card is already face-up, or if it's already part of a matched pair,
     // then do nothing.
-    if (!this.canFlip || card.isFlipped || card.isMatched) {
-      return // Exit the function early
-    }
+    if (this.canFlip || !card.isFlipped || !card.isMatched) {
+      // Change the card's visual texture to its hidden face texture
+      card.setTexture(card.faceTexture)
+      card.isFlipped = true // Mark this card as currently flipped (face-up)
 
-    // Change the card's visual texture to its hidden face texture
-    card.setTexture(card.faceTexture)
-    card.isFlipped = true // Mark this card as currently flipped (face-up)
+      // Check if this is the first or second card flipped in the current turn
+      if (this.flippedCardsCount === 0) {
+        // Using assistance from Google Gemini AI.
+        this.firstCard = card // Store a reference to this card
+        this.flippedCardsCount++ // Increment the counter
+      } else if (this.flippedCardsCount === 1) {
+        // Using assistance from Google Gemini AI.
+        this.secondCard = card // Store a reference to this card
+        this.flippedCardsCount++ // Increment the counter
+        this.canFlip = false // Prevent any more cards from being clicked until this pair is processed
 
-    // Check if this is the first or second card flipped in the current turn
-    if (this.flippedCardsCount === 0) {
-      // This is the first card of the turn
-      this.firstCard = card // Store a reference to this card
-      this.flippedCardsCount++ // Increment the counter
-    } else if (this.flippedCardsCount === 1) {
-      // This is the second card of the turn
-      this.secondCard = card // Store a reference to this card
-      this.flippedCardsCount++ // Increment the counter
-      this.canFlip = false // Prevent any more cards from being clicked until this pair is processed
-
-      // After a short delay (e.g., 1 second), call the 'checkForMatch' function.
-      // The 'this' argument ensures that 'this' inside 'checkForMatch' refers to the scene.
-      this.time.delayedCall(1000, this.checkForMatch, null, this)
+        // Using assistance from Google Gemini AI.
+        this.time.delayedCall(1000, this.checkForMatch, null, this)
+        }
     }
   }
 
