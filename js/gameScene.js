@@ -170,12 +170,6 @@ class GameScene extends Phaser.Scene {
       this.firstCard.isFlipped = false
       this.secondCard.isFlipped = false
     }
-
-    // Reset for the next turn:
-    this.firstCard = null // Clear the reference to the first card
-    this.secondCard = null // Clear the reference to the second card
-    this.flippedCardsCount = 0 // Reset the counter for flipped cards
-    this.canFlip = true // Allow cards to be clicked again
   }
 }
 
