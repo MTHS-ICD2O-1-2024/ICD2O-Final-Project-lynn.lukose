@@ -64,10 +64,10 @@ class GameScene extends Phaser.Scene {
 
     this.cardOne = this.add.sprite(1920 / 2 - 500, 1080 / 2 - 250, 'cardBack')
     this.cardOne.faceTexture = 'five_hearts'
-    this.cardOne.isFlipped = false 
-    this.cardOne.isMatched = false 
+    this.cardOne.isFlipped = false
+    this.cardOne.isMatched = false
     this.cardOne.setInteractive({ useHandCursor: true })
-    this.cardOne.on('pointerdown', () => this.flipCard(this.cardOne)) 
+    this.cardOne.on('pointerdown', () => this.flipCard(this.cardOne))
 
     this.cardTwo = this.add.sprite(1920 / 2, 1080 / 2 - 250, 'cardBack')
     this.cardTwo.faceTexture = 'seven_clubs'
@@ -117,36 +117,33 @@ class GameScene extends Phaser.Scene {
 
   /**
    * Sourced by Google Gemini
-   * Handles the logic for flipping a single card.
+   * Handles the logic for flipping a single card and stores reference to this card
    * This function manages the game flow for a turn.
    * @param {Phaser.GameObjects.Sprite} card - The specific card sprite that was clicked.
    */
-  flipCard(card) {
+  flipCard (card) {
     // If cards cannot be flipped (e.g., two are already face-up awaiting a check),
     // or if the clicked card is already face-up, or if it's already part of a matched pair,
     // then do nothing.
-    if (!this.canFlip || card.isFlipped || card.isMatched) {
-      return // Exit the function early
-    }
+    if (this.canFlip || !card.isFlipped || !card.isMatched) {
+      // Change the card's visual texture to its hidden face texture
+      card.setTexture(card.faceTexture)
+      card.isFlipped = true // Mark this card as currently flipped (face-up)
 
-    // Change the card's visual texture to its hidden face texture
-    card.setTexture(card.faceTexture)
-    card.isFlipped = true // Mark this card as currently flipped (face-up)
+      // Check if this is the first or second card flipped in the current turn
+      if (this.flippedCardsCount === 0) {
+        // Using assistance from Google Gemini AI.
+        this.firstCard = card // Store a reference to this card
+        this.flippedCardsCount++ // Add one to the counter
+      } else if (this.flippedCardsCount === 1) {
+        // Using assistance from Google Gemini AI.
+        this.secondCard = card // Store a reference to this card
+        this.flippedCardsCount++ // Add one to the counter
+        this.canFlip = false // Prevent any more cards from being clicked until this pair is processed
 
-    // Check if this is the first or second card flipped in the current turn
-    if (this.flippedCardsCount === 0) {
-      // This is the first card of the turn
-      this.firstCard = card // Store a reference to this card
-      this.flippedCardsCount++ // Increment the counter
-    } else if (this.flippedCardsCount === 1) {
-      // This is the second card of the turn
-      this.secondCard = card // Store a reference to this card
-      this.flippedCardsCount++ // Increment the counter
-      this.canFlip = false // Prevent any more cards from being clicked until this pair is processed
-
-      // After a short delay (e.g., 1 second), call the 'checkForMatch' function.
-      // The 'this' argument ensures that 'this' inside 'checkForMatch' refers to the scene.
-      this.time.delayedCall(1000, this.checkForMatch, [], this)
+        // Using assistance from Google Gemini AI.
+        this.time.delayedCall(1000, this.checkForMatch, null, this)
+      }
     }
   }
 
@@ -154,7 +151,7 @@ class GameScene extends Phaser.Scene {
    * Compares the two flipped cards to see if they are a match.
    * Resets the game state for the next turn.
    */
-  checkForMatch() {
+  checkForMatch () {
     // Check if the face textures of the two flipped cards are the same
     if (this.firstCard.faceTexture === this.secondCard.faceTexture) {
       // It's a match!
@@ -164,7 +161,6 @@ class GameScene extends Phaser.Scene {
       // Mark them as matched cards
       this.firstCard.isMatched = true
       this.secondCard.isMatched = true
-      // Removed: matchesFound++ and win condition check
     } else {
       // Not a match!
       // Flip both cards back to their face-down texture
@@ -174,12 +170,6 @@ class GameScene extends Phaser.Scene {
       this.firstCard.isFlipped = false
       this.secondCard.isFlipped = false
     }
-
-    // Reset for the next turn:
-    this.firstCard = null // Clear the reference to the first card
-    this.secondCard = null // Clear the reference to the second card
-    this.flippedCardsCount = 0 // Reset the counter for flipped cards
-    this.canFlip = true // Allow cards to be clicked again
   }
 }
 
